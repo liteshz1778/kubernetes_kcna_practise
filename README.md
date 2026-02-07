@@ -1,10 +1,9 @@
-This repo content practise files of kubernetes kcna
+This repo content practise files of kubernetes kcna<br><br>
 
 **ShellScript to Configure this GIT Repository ---------->**<br><br>
 #!/bin/bash<br>
 git config --global credential.helper store<br>
-<!------If we want to delete/edit then update this file ~/.git-credentials/store -----><br>
-<br>
+<!------If we want to delete/edit then update this file ~/.git-credentials/store ----->
 git init<br>
 <br>
 read -p "Enter repo name: " GIT_REPO_NAME<br>
