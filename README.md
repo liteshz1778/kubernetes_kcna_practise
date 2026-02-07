@@ -18,3 +18,4 @@ git remote -v <br>
 <br><br>
 #sleep 15<br>
 #rm -rfv /root/code/$GIT_REPO_NAME<br>
+alias kubectl='k'<br>
