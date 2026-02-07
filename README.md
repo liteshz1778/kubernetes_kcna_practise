@@ -3,7 +3,7 @@ This repo content practise files of kubernetes kcna
 **ShellScript to Configure this GIT Repository ---------->**<br><br>
 #!/bin/bash<br>
 git config --global credential.helper store<br>
-# If we want to delete/edit then update this file ~/.git-credentials/store <br>
+<!------If we want to delete/edit then update this file ~/.git-credentials/store -----><br>
 <br>
 git init<br>
 <br>
