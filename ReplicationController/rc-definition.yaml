@@ -8,9 +8,9 @@ metadata:
 spec:
     template:
         metadata:
-            name: my-app-pod
+            name: myapp-pod
             labels:
-                app: my-app
+                app: myapp
                 type: frontend
         spec: 
             containers:
