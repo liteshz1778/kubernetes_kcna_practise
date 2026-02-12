@@ -19,7 +19,7 @@ git remote -v <br>
 #sleep 15<br>
 #rm -rfv /root/code/$GIT_REPO_NAME<br> <br><br>
 
-#Added sleep after each alias as it was not simultaneously. --------><br> <br>
+#Added sleep after each alias as it was not working simultaneously. --------><br> <br>
 alias k='kubectl'<br>
 sleep 1<br>
 alias kget='kubectl get' <br>
