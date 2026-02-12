@@ -17,10 +17,21 @@ git remote show my_repo_name<br>
 git remote -v <br>
 <br><br>
 #sleep 15<br>
-#rm -rfv /root/code/$GIT_REPO_NAME<br> <br>
-alias k=kubectl <br>
-alias kget="kubectl get" <br>
-alias kdes="kubectl describe" <br>
-alias kcreate="kubectl create" <br>
-alias kapply="kubectl apply" <br>
-alias kdelete="kubectl delete" <br>
+#rm -rfv /root/code/$GIT_REPO_NAME<br> <br><br>
+
+#Added sleep after each alias as it was not simultaneously.
+alias k='kubectl'<br>
+sleep 1<br>
+alias kget='kubectl get' <br>
+sleep 1<br>
+alias kdes='kubectl describe' <br>
+sleep 1<br>
+alias kcreate='kubectl create' <br>
+sleep 1<br>
+alias kapply='kubectl apply' <br>
+sleep 1 <br>
+alias kdelete='kubectl delete' <br>
+#List out the alias created
+alias
+
+#unalias kget kdes kcreate kapply kdelete
