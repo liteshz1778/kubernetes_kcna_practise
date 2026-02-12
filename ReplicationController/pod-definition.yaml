@@ -7,5 +7,5 @@ metadata:
         type: frontend
 spec:
     containers:
-        - name: nginx-containers	
+        - name: nginx-container
           image: nginx:1.28.2
