@@ -17,5 +17,10 @@ git remote show my_repo_name<br>
 git remote -v <br>
 <br><br>
 #sleep 15<br>
-#rm -rfv /root/code/$GIT_REPO_NAME<br>
-alias kubectl='k'<br>
+#rm -rfv /root/code/$GIT_REPO_NAME<br> <br>
+alias k=kubectl <br>
+alias kget="kubectl get" <br>
+alias kdes="kubectl describe" <br>
+alias kcreate="kubectl create" <br>
+alias kapply="kubectl apply" <br>
+alias kdelete="kubectl delete" <br>
