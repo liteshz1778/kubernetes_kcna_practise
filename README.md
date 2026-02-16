@@ -32,17 +32,13 @@ git remote -v <br>
 
 #Added sleep after each alias as it was not working simultaneously.<br>
 #alias k='kubectl' kget='kubectl get' kdes='kubectl describe' kcreate='kubectl create' kapply='kubectl apply' kdelete='kubectl delete'<br>
-alias k='kubectl'<br>
-sleep 1<br>
-alias kget='kubectl get' <br>
-sleep 1<br>
-alias kdes='kubectl describe' <br>
-sleep 1<br>
-alias kcreate='kubectl create' <br>
-sleep 1<br>
-alias kapply='kubectl apply' <br>
-sleep 1<br>
-alias kdelete='kubectl delete'<br>
+cat << EOF >> .bashrc  <br>
+alias kget="kubectl get" <br>
+alias kdes="kubectl describe" <br>
+alias kaply="kubectl apply"  <br>
+alias kdel="kubectl delete" <br>
+alias kcrt="kubetcl create" <br>
+EOF
 #List out the alias created <br>
 alias <br>
 
