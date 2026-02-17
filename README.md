@@ -39,6 +39,7 @@ alias kdes="kubectl describe" <br>
 alias kaply="kubectl apply" <br>
 alias kdel="kubectl delete" <br>
 alias kcrt="kubectl create" <br>
+alias kexp="kubectl explain" <br>
 EOF <br>
 
 <!--#List out the alias created-->
