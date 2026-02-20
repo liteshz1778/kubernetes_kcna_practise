@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: myapp-deployment
+    labels:
+        app: myapp
+        type: frontend
+    namespace: qa
+spec:
+    template:
+      metadata:
+        name: myapp-pod
+        labels:
+          app: myapp
+          type: frontend
+      spec:
+        containers:
+            - name: nginx-container
+              image: nginx
+        resources:
+            requests:
+                memory: 200Mi
+                cpu: 200m
+            limits:
+                memory: 400Mi
+                cpu: 400m
+    replicas: 5
+    strategy:
+        type: RollingUpdate
+    selector:
+      matchLabels: 
+        type: frontend

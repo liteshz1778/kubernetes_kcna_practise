@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2026-02-20T10:12:18Z"
+  labels:
+    kubernetes.io/metadata.name: qa
+  name: qa
+  resourceVersion: "1770"
+  uid: fcaf98a9-8830-439d-8332-ea60438bb181
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
