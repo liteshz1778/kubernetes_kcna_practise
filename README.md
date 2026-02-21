@@ -33,14 +33,14 @@ git remote -v<br>
 
 <!--Added sleep after each alias as it was not working simultaneously.-->
 #alias k='kubectl' kget='kubectl get' kdes='kubectl describe' kcreate='kubectl create' kapply='kubectl apply' kdelete='kubectl delete'
-cat << EOF >> .bashrc || exit 1 <br>
+<!---cat << EOF >> .bashrc || exit 1 <br>
 alias kget="kubectl get" <br>
 alias kdes="kubectl describe" <br>
 alias kaply="kubectl apply" <br>
 alias kdel="kubectl delete" <br>
 alias kcrt="kubectl create" <br>
 alias kexp="kubectl explain" <br>
-EOF <br>
+EOF <br> --->
 
 <!--#List out the alias created-->
 alias<br>
