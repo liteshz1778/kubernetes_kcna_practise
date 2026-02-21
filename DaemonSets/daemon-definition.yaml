@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+    name: myapp-daemonset
+    labels:
+        type: backend-monitoring-logs
+    namespace: qa
+spec:
+    template:
+        metadata:
+            name: myapp-pod
+            labels:
+                type: backend-monitoring-logs
+        spec:
+            containers:
+                - name: nginx-container
+                  image: nginx            
+    selector:
+        matchExpressions:
+            - key: type
+              operator: In
+              values: 
+                - backend-monitoring-logs
