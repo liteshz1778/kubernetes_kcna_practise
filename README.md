@@ -43,7 +43,7 @@ alias kexp="kubectl explain" <br>
 EOF <br> --->
 
 <!--#List out the alias created-->
-alias<br>
+#alias<br>
 
 #unalias kget kdes kcreate kapply kdelete<br>
 
