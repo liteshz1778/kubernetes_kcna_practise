@@ -19,11 +19,11 @@ spec:
                   image: nginx
             resources:
                 requests:
-                    memory: 1500Mi
-                    cpu: 1.5m
+                    memory: 1500M
+                    cpu: 1200m
                 limits:
-                    memory: 2400Mi
-                    cpu: 2.3m
+                    memory: 2400M
+                    cpu: 2400m
     replicas: 1
     strategy:
         type: RollingUpdate
