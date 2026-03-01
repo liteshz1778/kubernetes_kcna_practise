@@ -17,13 +17,13 @@ spec:
         containers:
             - name: nginx-container
               image: nginx
-        resources:
-            requests:
-                memory: 200Mi
-                cpu: 200m
-            limits:
-                memory: 400Mi
-                cpu: 400m
+              resources:
+                  requests:
+                      memory: 200Mi
+                      cpu: 200m
+                  limits:
+                      memory: 400Mi
+                      cpu: 400m
     replicas: 5
     strategy:
         type: RollingUpdate
