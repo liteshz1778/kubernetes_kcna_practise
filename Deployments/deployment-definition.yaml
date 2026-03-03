@@ -16,8 +16,7 @@ spec:
           containers:
                 - name: nginx-container
                   image: nginx
-                  command: ["/bin/bash"]
-                  args: ["-c","apt-get update -y; apt-get install -y iputils-ping"]
+                  command: ["/bin/bash", "-c", "apt-get update -y", "apt-get install -y iputils-ping"]                  
     replicas: 1
     selector:
         matchLabels:
