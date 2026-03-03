@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-app-pod
+  labels:
+    type: frontend
+    app: banking-app
+  namespace: prod
+spec:
+  containers:
+    - name: web-app-container
+      image: nginx
+      ports:
+        - containerPort: 1000

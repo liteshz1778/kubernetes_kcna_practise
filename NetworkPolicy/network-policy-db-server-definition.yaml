@@ -14,6 +14,13 @@ spec:
       - podSelector:
           matchLabels:
             type: backend
+        namespaceSelector:
+          matchExpressions:
+            - key: ns
+              operator: In
+              values:
+                - prod
+                - default
     - ports:
       - protocol: TCP
         port: 3000
