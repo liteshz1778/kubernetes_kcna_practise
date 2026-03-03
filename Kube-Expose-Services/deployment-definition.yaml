@@ -13,11 +13,11 @@ spec:
                 app: myapp
                 type: frontend
         spec: 
-          containers:
+            containers:
                 - name: nginx-container
                   image: nginx
                   command: ["/bin/bash"]
-                  args: ["-c","apt-get update -y; apt-get install -y iputils-ping"]
+                  args: ["-c","apt-get update -y; apt-get install -y iputils-ping"] 
     replicas: 1
     selector:
         matchLabels:
