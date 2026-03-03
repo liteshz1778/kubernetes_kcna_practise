@@ -16,8 +16,9 @@ spec:
             containers:
                 - name: nginx-container
                   image: nginx
-              
-    replicas: 5
+                  command: ["/bin/bash"]
+                  args: ["apt-get update -y; apt-get install -y iputils-ping"] 
+    replicas: 1
     selector:
         matchLabels:
             type: frontend
