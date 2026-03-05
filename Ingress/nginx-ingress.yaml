@@ -4,6 +4,7 @@ metadata:
   name: nginx-ingress-rule
   namespace: qa
 spec:
+  ingressClassName: nginx
   rules:
     - host: myservice.com
       http:
