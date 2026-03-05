@@ -5,6 +5,7 @@ metadata:
     labels:
         app: myapp
         type: frontend
+    namespace: qa
 spec:
     template:
         metadata:
