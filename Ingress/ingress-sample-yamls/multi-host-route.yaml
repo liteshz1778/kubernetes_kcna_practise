@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress-rule
+  namespace: qa
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: litesh.myservice.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: 
+                name: nginx-frontend-service
+                port:
+                  number: 80
+    - host: zadane.myservice.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: 
+                name: nginx-frontend-service
+                port:
+                  number: 80
