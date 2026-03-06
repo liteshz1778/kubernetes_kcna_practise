@@ -1,0 +1,33 @@
+Install nginx-ingress-cntr using Helm
+helm install nginx-ingress-cntr oci://ghcr.io/nginx/charts/nginx-ingress --version 2.4.4
+
+-----------------------------------------------
+
+ifconfig --> to know the Worker Node IP
+
+update /etc/host/ with "Worker_Node_IP Domain_Configured_Ingress_Rule"
+
+-----------------------------------------------
+
+kget ingress
+
+kdes ingress {{ingress_name}} -----------> Check & Validate whether Ingress Controller recongized the Ingress Rule we have created.
+
+-----------------------------------------------
+Access using below different ways like host, path & wildcard operator
+
+
+Simple Access 
+curl http://192.168.101.190:31037 -H "host: myservice.com"
+
+Access using Wildcart Operator
+
+curl http://192.168.101.190:31037 -H "host: foo.myservice.com"
+curl http://192.168.101.190:31037 -H "host: .myservice.com"
+
+Different Hosts:
+curl http://192.168.101.190:31037 -H "host: litesh.myservice.com"
+curl http://192.168.101.190:31037 -H "host: zadane.myservice.com"
+
+
+-----------------------------------------------
