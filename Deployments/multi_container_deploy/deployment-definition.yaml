@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multi-container-deploy
+spec:
+  replicas: 2
+  selector: 
+    matchExpressions:
+      - key: app
+        operator: In 
+        values:
+          - myapp
+  template:
+    metadata:
+      name: multi-container-pod
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
+          ports:
+            - containerPort: 80
+          env:
+            - name: FIRSTNAME
+              value: Litesh
+            - name: LASTNAME
+              value: Zadane
+          volumeMounts:
+            - name: shared-data
+              mountPath: "/usr/share/nginx/html"
+        - name: busybox
+          image: busybox
+          env:
+            - name: FIRSTNAME
+              value: Sunil
+            - name: LASTNAME
+              value: Zadane
+          imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
+          command:
+            - sh
+            - -c
+            - | 
+              while true
+              do
+                echo "<h1>Hi , This is Dummy Webpage</h1><br><h2>Sidecar Container updating this page</h2><br><h3>Updated at: $(date)</h3>" > /shared/index.html
+                sleep 5
+              done
+          volumeMounts:
+            - name: shared-data
+              mountPath: /shared/
+      volumes:
+        - name: shared-data
+          emptyDir: {}
