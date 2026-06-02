@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: demo-app
+  labels:
+    app: myapp
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      name: demo-app-pod
+      labels:
+        app: myapp
+    spec:
+      initContainers:
+        - name: apline
+          image: alpine
+          command:
+            - sh
+            - -c
+            - |
+              touch /var/log/app/output.log
+              echo "Application Initialization" > /var/log/app/output.log
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /var/log/app
+      containers:
+        - name: busybox
+          image: busybox
+          restartPolicy: OnFailure
+          command: 
+            - sh
+            - -c
+          args:
+            - |
+              while true; do
+                echo "$(date): Service is running successfully" >> /var/log/app/output.log
+                sleep 5
+                tail -5 /var/log/app/output.log
+              done
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /var/log/app
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
