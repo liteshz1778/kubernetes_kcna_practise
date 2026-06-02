@@ -46,8 +46,9 @@ spec:
             - | 
               while true
               do
-                echo "<h1>Hi , This is Dummy Webpage</h1><br><h2>Sidecar Container updating this page</h2><br><h3>Updated at: $(date)</h3>" > /shared/index.html
+                echo "<h1>This is Dummy Webpage!!<h1><h3>Sidecar Container Updates this Webpage after every 5 seconds. Updated at: $(date)</h3>" > /shared/index.html
                 sleep 5
+                tail /shared/index.html
               done
           volumeMounts:
             - name: shared-data
