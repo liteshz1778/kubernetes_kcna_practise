@@ -2,10 +2,11 @@
 
 
 set -xe
-kubectl delete -f . --recursive
+kubectl delete statefulset mongo-app
+kubectl delete svc mongo-svc
+kubectl delete pvc --all
+kubectl delete pv --all
+kubectl delete sc mongo-sc
+
 
 echo "Resources Deleted Successfully!!"
-#kubectl delete -f headless-svc-definition.yaml
-#kubectl delete -f storage-class-definition.yaml
-#kubectl delete -f pv-definition.yaml
-#kubectl delete -f sts-definition.yaml
