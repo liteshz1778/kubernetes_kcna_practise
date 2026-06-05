@@ -1,0 +1,4 @@
+Refer this for refernce: https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day45-StatefulSet
+
+k exec -it {pod_name} -- which mongosh
+k exec -it {pod_name} -- mongosh
