@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo-app
+  labels:
+    app: mongo_app
+spec: 
+  serviceName: mongo-svc
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mongo_app
+  template:
+    metadata:
+      name: mongo-app-pod
+      labels:
+        app: mongo_app
+    spec:
+      containers:
+        - name: mongo-app-container
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: mongo-vol
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-vol
+      spec:
+        resources: 
+          requests:
+            storage: 1Gi
+        accessModes:
+          - ReadWriteMany
+        storageClassName: mongo-sc
