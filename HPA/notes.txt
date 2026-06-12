@@ -1,0 +1,4 @@
+#Command to generate the load 
+kubectl run -it --rm busybox   --image=busybox   --restart=Never   -- /bin/sh -c 'while true; do wget -q -O- http://172.20.25.87:8080; sleep 0.01; done'
+
+k get hpa -w
