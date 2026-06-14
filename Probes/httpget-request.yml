@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-http
+  labels:
+    app: probe-http
+spec:
+  containers:
+    - name: probe-http-container
+      image: registry.io/e2e-test-images/agohost:2.40
+      args: 
+        - liveness
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        failureThreshold: 3
+        successThreshold: 1
+      readinessProbe:
+        httpGet:
+          path: /healthz
+          port: 8080
+        initialDelaySeconds: 15
+        periodSeconds: 10
+        failureThreshold: 3
+        successThreshold: 1
