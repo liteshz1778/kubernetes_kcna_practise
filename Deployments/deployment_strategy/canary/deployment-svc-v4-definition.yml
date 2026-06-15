@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-v4
+  labels:
+    app: myapp
+    version: v4
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+      version: v4
+  template:
+    metadata:
+      name: demo-app-v4-pod
+      labels:
+        app: myapp
+        version: v4
+    spec:
+      containers:
+        - name: demo-app-v4-container
+          image: liteshz/httpd_server_files:v4
+          ports:
+            - containerPort: 80
+          env: 
+            - name: DEMO_DESCRITION
+              value: "This is demo for Canary Deployment"
+            - name: APPLICATION_VERSION
+              value: v4
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-app-v4-svc
+spec:
+  type: ClusterIP
+  selector: 
+    app: myapp
+    version: v4
+  ports:
+    - port: 8080
+      targetPort: 80
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-app-v4-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "my-demo-svc.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: demo-app-v4-svc
+                port:
+                  number: 8080
