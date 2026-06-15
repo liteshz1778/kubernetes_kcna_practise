@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-v4
+  labels:
+    app: myapp
+    version: v4
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+      version: v4
+  template:
+    metadata:
+      name: demo-app-v4-pod
+      labels:
+        app: myapp
+        version: v4
+    spec:
+      containers:
+        - name: demo-app-v4-container
+          image: liteshz/httpd_server_files:v4
+          ports:
+            - containerPort: 80
+          env: 
+            - name: DEMO_DESCRITION
+              value: "This is demo for blue-green Deployment"
+            - name: APPLICATION_VERSION
+              value: v4
+            - name: DEPLOYMENT_VERSION
+              value: green
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-app-v4-svc
+spec:
+  type: ClusterIP
+  selector: 
+    app: myapp
+    version: v4
+  ports:
+    - port: 8080
+      targetPort: 80
