@@ -6,22 +6,20 @@ metadata:
     app: probe-tcp-socket
 spec:
   containers:
-    - name: probe-http-container
+    - name: probe-tcp-socket-container
       image: liteshz/httpd_server_files:v3
       env:
         - name: POD_DESCRIPTION
           value: "This is demo for Probes"
       livenessProbe:
-        httpGet:
-          path: /health
+        tcpSocket:
           port: 80
         initialDelaySeconds: 15
         periodSeconds: 10
         failureThreshold: 3
         successThreshold: 1
       readinessProbe:
-        httpGet:
-          path: /health
+        tcpSocket:
           port: 80
         initialDelaySeconds: 15
         periodSeconds: 10
