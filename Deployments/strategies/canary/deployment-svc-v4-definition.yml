@@ -51,7 +51,7 @@ metadata:
   name: demo-app-v4-ingress
   annotations:
     nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-weight: "10"
+    nginx.ingress.kubernetes.io/canary-weight: "100"
 spec:
   ingressClassName: nginx
   rules:

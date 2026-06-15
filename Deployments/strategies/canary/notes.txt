@@ -1,0 +1,25 @@
+#Deploying nginx community ingress controller & load balancer:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/baremetal/deploy.yaml
+
+#Validating the ingress class deployed or not:
+
+kubectl get ingressclass
+
+#Getting the NodePort for accessing the host configured by ingress 
+kubectl get ns
+kubectl get svc -n ingress-nginx
+
+
+#configuring our node ip in /etc/hosts file
+<node-ip> my-demo-svc.com
+
+#Access the host using localhost/node-ip
+curl -s http://localhost:<ingress-nodeport-no> -H "Host: my-demo-svc.com"
+curl -s http://<node-ip>:<ingress-nodeport-no> -H "Host: my-demo-svc.com"
+
+
+#Below commands can be used for checking the traffic flow based configured canary deployment ingress annotation percentage:
+for i in $(seq 1 20); do curl -s http://127.0.0.1:31189/ -H "Host: my-demo-svc.com"  | grep "Httpd WebServer Application"; done
+for i in $(seq 1 20); do curl -s http://10.244.223.14:31189/ -H "Host: my-demo-svc.com"  | grep "Httpd WebServer Application"; done
+
+
