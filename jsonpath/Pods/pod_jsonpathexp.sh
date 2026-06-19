@@ -21,7 +21,3 @@ echo -e "\n===========================\n"
 kubectl get pod -o jsonpath-as-json='{.items[*].metadata.name}{.items[*].status.podIP}'
 
 echo -e "\n***************************\n"
-
-echo -e "SVC JsonPath Examples"
-
-
