@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpd
+  labels:
+    app: httpd
+spec:
+  containers:
+    - name: httpd-server-container
+      image: liteshz/httpd_server_files:v3
+      env:
+        - name: APP_DESCRIPTION
+          value: "This is httpd server running"
+      ports:
+        - containerPort: 80
+      imagePullPolicy: IfNotPresent
+      restartPolicy: OnFailure
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: 80
+        initialDelaySeconds: 20
+        periodSeconds: 10
+        failureThreshold: 3
+        successThreshold: 1
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: 80
+        initialDelaySeconds: 20
+        periodSeconds: 10
+        failureThreshold: 3
+        successThreshold: 1
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-svc
+spec:
+  type: NodePort
+  selector:
+    app: httpd
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30000
