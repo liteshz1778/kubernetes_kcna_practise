@@ -9,4 +9,8 @@ kubectl edit deployment metrics-server
 
 kubectl rollout restart deployment metrics-server -n kube-system
 
+k top no 
+
+k top po
+
 kubectl get pods -w
